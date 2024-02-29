@@ -1,5 +1,5 @@
-SELECT ar.name AS `Artista`, 
-       al.title AS `Álbuns`
-FROM artists ar
-LEFT JOIN albums al ON ar.id = al.artist_id
-ORDER BY ar.name ASC;
+SELECT a.name AS Artista, GROUP_CONCAT(b.title) AS Álbuns
+FROM artists a
+JOIN albums b ON a.id = b.artist_id
+GROUP BY a.name
+ORDER BY a.name ASC, Álbuns ASC;
